@@ -66,7 +66,11 @@ function createInsect() {
     >
     `
     // when insect ic slicked, call catchInsect()
-    insect.addEventListener('click', catchInsect)
+    // insect.addEventListener('click', catchInsect)
+
+    insect.addEventListener('click', () => {
+        catchInsect(insect)
+    })
 
     gameContainer.appendChild(insect)
 }
@@ -82,14 +86,16 @@ function getRandomLocation() {
 }
 
 // when insect is clicked
-function catchInsect() {
+function catchInsect(insect) {
     // console.log(123)
+    // checking to see if insect is passed
+    // console.log(insect)
 
     increaseScore()
     // add class from css to animate scale down and remove insect
-    this.classList.add('caught')
+    insect.classList.add('caught')
     setTimeout(() => {
-        this.remove()
+        insect.remove()
     }, 2000);
 
     // add more insects every time one is clicked
